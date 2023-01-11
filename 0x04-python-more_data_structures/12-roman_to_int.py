@@ -2,20 +2,18 @@
 
 
 # roman_to_int - converts a roman numeral to an integer.
-def roman_to_int(roman_string):
-    romans = {'I': 1, 'V': 5, 'X': 10, 'L':50, 'C': 100, 'D': 500, 'M': 1000,\
-	    'IV': 4, 'IX': 9, 'XL': 40, 'XC': 90, 'CD': 400, 'CM': 900}
 
-    if roman_string and type(roman_string) == str:
-        num = 0
-        for i in range(len(roman_string)):
-            for j in romans.keys():
-                if roman_string[:] is j:
-                    num = romans[j]
-                    return num
-                if roman_string[i:i+1] is j:
-                    num += romans[j]
-                    break
-        return num
-    else:
+def roman_to_int(roman_string):
+    if roman_string is None or isinstance(roman_string, str) is False:
         return 0
+    n = 0
+    roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    for i in roman_string:
+        n += roman.get(i, 0)
+    subs = {'CM': -200, 'CD': -200, 'XC': -20, 'XL': -20, 'IX': -2, 'IV': -2}
+    chars = ""
+    for i in range(0, len(roman_string) - 1):
+        chars = roman_string[i] + roman_string[i + 1]
+        if chars in subs:
+            n += subs[chars]
+    return n
