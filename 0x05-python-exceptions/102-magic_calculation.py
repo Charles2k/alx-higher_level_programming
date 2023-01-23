@@ -1,7 +1,13 @@
 #!/usr/bin/python3
-# 102-magic_calculation.py
-
-
 def magic_calculation(a, b):
-    """A function based on a python bytee code"""
-    return (result)
+    result = 0
+    for x in range(1, 3):
+        try:
+            if x > a:
+                raise Exception("Too far")
+            else:
+                result = result + (a ** b) / x
+        except:
+            result = a + b
+            break
+    return result
