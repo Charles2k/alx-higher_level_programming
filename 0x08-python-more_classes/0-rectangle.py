@@ -1,12 +1,7 @@
 #!/usr/bin/python3
-
-"""
-    0-rectangle: class Rectangle
-"""
+"""create class"""
 
 
 class Rectangle:
-    """
-        An empty class
-    """
+    """add pass for print the class max {}"""
     pass
